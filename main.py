@@ -19,7 +19,7 @@ mail = Mail(app)
 def home():
 	return render_template('index.html')
 
-@app.route("/result",methods = ["GET", "POST"])
+@app.route("/",methods = ["GET", "POST"])
 def result():
 	if request.method == 'POST':
 		f = request.files['file']

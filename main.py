@@ -19,7 +19,7 @@ mail = Mail(app)
 def home():
 	return render_template('index.html')
 
-@app.route("/",methods = ["GET", "POST"])
+@app.route("/" ,methods = ["GET", "POST"])
 def result():
 	if request.method == 'POST':
 		f = request.files['file']
@@ -33,7 +33,7 @@ def result():
 		return render_template("result.html", result=result)
 	return render_template("index.html")
 
-@app.route("/contact",methods=['GET','POST'])
+@app.route("/",methods=['GET','POST'])
 def contact():
     if (request.method == 'POST'):
         name = request.form.get('Name')

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Disease Detection</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
+</style>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="/" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+    <a href="/#disease" class="w3-bar-item w3-button w3-padding-large w3-hide-small">DISEASE DETECTION</a>
+    <a href="/#try" class="w3-bar-item w3-button w3-padding-large w3-hide-small">TRY IT</a>
+    <a href="/#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+  </div>
+</div>
+
+<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <a href="/" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">HOME</a>
+  <a href="/#disease" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">DISEASE DETECTION</a>
+  <a href="/#try" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">TRY IT</a>
+  <a href="/#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CONTACT</a>
+</div>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px">
+
+  <!-- The disease Section -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="disease">
+    <h2 class="w3-wide">DISEASE DETECTION</h2>
+    <p class="w3-justify">Crop diseases are a major threat to food security, but their rapid identification remains difficult in many parts of the world due to the lack of the necessary infrastructure. The combination of increasing global smartphone penetration and recent advances in computer vision made possible by deep learning has paved the way for disease diagnosis.
+      <p>Every disease, pest, and deficiency leaves behind a specific pattern. Farmer's Helper recognizes these patterns.One photo is enough and you know what your plant is missing.</p>
+  </div>
+
+  <!-- The try Section -->
+  <div class="w3-black" id="try">
+    <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+      <h2 class="w3-wide w3-center">Result</h2>
+      <p class="w3-opacity w3-center"><i>result of your uploaded image</i></p><br>
+      <center>{{result}}
+      <p>Want to try again? Click <a href="/#try">here</a></p>
+      </center>
+    </div>
+  </div>
+
+  <!-- The Contact Section -->
+  <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
+    <h2 class="w3-wide w3-center">CONTACT</h2>
+    <p class="w3-opacity w3-center"><i>Drop a note!</i></p>
+    <div class="w3-row w3-padding-32">
+      <div class="w3-col m6 w3-large w3-margin-bottom">
+        <i class="fa fa-map-marker" style="width:30px"></i> Ahmedabad, Gujarat<br>
+        <i class="fa fa-phone" style="width:30px"></i> Phone: +91 9904278934<br>
+        <i class="fa fa-envelope" style="width:30px"> </i> Email: dmakwana503@gmail.com<br>
+      </div>
+      <div class="w3-col m6">
+        <form action="/contact" method="POST">
+          <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+            </div>
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+            </div>
+          </div>
+          <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+          <button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

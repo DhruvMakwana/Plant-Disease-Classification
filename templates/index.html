@@ -61,7 +61,7 @@ body {font-family: "Lato", sans-serif}
       <h2 class="w3-wide w3-center">TRY IT YOUR SELF</h2>
       <p class="w3-opacity w3-center"><i>upload one image only</i></p><br>
 
-      <form action="{{ url_for('result') }}" method="POST">
+      <form action="/result" method="post" enctype="multipart/form-data">
         <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <div class="file-upload">
           <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
@@ -94,7 +94,7 @@ body {font-family: "Lato", sans-serif}
         <i class="fa fa-envelope" style="width:30px"> </i> Email: dmakwana503@gmail.com<br>
       </div>
       <div class="w3-col m6">
-        <form action="{{ url_for('contact') }}" method="POST">
+        <form action="/contact" method="POST">
           <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
             <div class="w3-half">
               <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">

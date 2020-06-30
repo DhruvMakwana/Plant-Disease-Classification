@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 from flask_mail import Mail
+from src.predict import build
 import os
+import cv2
 
 app = Flask(__name__)
 app.config.update(
@@ -13,27 +15,26 @@ app.config.update(
 )
 mail = Mail(app)
 
-
-
 @app.route('/')
 def home():
 	return render_template('index.html')
 
-@app.route("/" ,methods = ["GET", "POST"])
+@app.route("/result" ,methods = ["GET", "POST"])
 def result():
 	if request.method == 'POST':
 		f = request.files['file']
-		f.save(os.path.join("static/upload", secure_filename(f.filename)))
-		from src.predict import build
-		filepath = os.path.join("static/upload", secure_filename(f.filename))
+		f.save(os.path.join("upload", secure_filename(f.filename)))
+		filepath = os.path.join("upload", secure_filename(f.filename))
+		print("before build")
 		result = build(filepath)
+		print("after build")
 		st = "Your Predicted result is "
 		result = st + str(result)
 		print(result)
 		return render_template("result.html", result=result)
 	return render_template("index.html")
 
-@app.route("/",methods=['GET','POST'])
+@app.route("/contact",methods=['GET','POST'])
 def contact():
     if (request.method == 'POST'):
         name = request.form.get('Name')

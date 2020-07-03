@@ -10,8 +10,8 @@ app.config.update(
     MAIL_SERVER = 'smtp.gmail.com',
     MAIL_PORT = '465',
     MAIL_USE_SSL = True,
-    MAIL_USERNAME = "thefarmerhelper@gmail.com",
-    MAIL_PASSWORD = "farmer@123" 
+    MAIL_USERNAME = {your email id},
+    MAIL_PASSWORD = {your password} 
 )
 mail = Mail(app)
 
@@ -40,8 +40,8 @@ def contact():
         email = request.form.get('Email')
         message = request.form.get('Message')
         mail.send_message('New message from ' + email,
-                      sender='thefarmerhelper@gmail.com',
-                      recipients=['dmakwana503@gmail.com'],
+                      sender={sender email id},
+                      recipients={recipients email id},
                       body=message + " from " + name
                       )
     return render_template('index.html')

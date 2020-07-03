@@ -1,9 +1,9 @@
+# importing libraries
 from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 from flask_mail import Mail
 from src.predict import build
 import os
-import cv2
 
 app = Flask(__name__)
 app.config.update(
@@ -17,17 +17,15 @@ mail = Mail(app)
 
 @app.route('/')
 def home():
-	return render_template('index.html')
+  return render_template('index.html')
 
 @app.route("/result" ,methods = ["GET", "POST"])
 def result():
 	if request.method == 'POST':
-		f = request.files['file']
+		f = request.files.get('file')
 		f.save(os.path.join("upload", secure_filename(f.filename)))
 		filepath = os.path.join("upload", secure_filename(f.filename))
-		print("before build")
 		result = build(filepath)
-		print("after build")
 		st = "Your Predicted result is "
 		result = st + str(result)
 		print(result)
@@ -49,4 +47,4 @@ def contact():
     return render_template('index.html')
 
 if __name__ == "__main__":
-	app.run(host="127.0.0.1", port=8080, debug=True)
+  app.run(host = "127.0.0.1", port = 8080, debug = True)

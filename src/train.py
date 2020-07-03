@@ -1,7 +1,6 @@
 # importing libraries
 from glob import glob
-import matplotlib.pyplot as plt
-from keras.models import Sequential
+from keras.models import Model
 from keras.preprocessing.image import ImageDataGenerator
 from keras.layers import GlobalAveragePooling2D
 from keras.layers.core import Dropout, Dense
@@ -20,7 +19,7 @@ aug = ImageDataGenerator(preprocessing_function = preprocess_input,
 	validation_split = 0.20,
 	rescale = 1./255)
 
-batch_size = 16
+batch_size = 32
 training_set = aug.flow_from_directory(train_dir,
 	target_size = (224, 224),
 	batch_size = batch_size,
@@ -41,9 +40,7 @@ headModel = Dense(39, activation='sigmoid', name = "resnet152v2_dense")(headMode
 
 model = Model(inputs = baseModel.input, outputs = headModel, name = "ResNet152V2")
 
-model.load_weights("../models/rnweights.hdf5")
-
-# print summary
+model.trainable = True
 print(model.summary())
 
 # define criteria for stopping. we will stop training if validation accuracy got reached 98%
@@ -56,7 +53,8 @@ class myCallback(tf.keras.callbacks.Callback):
 callbacks = myCallback()
 
 # compile model
-model.compile(optimizer = Adam(learning_rate = 0.005), loss = 'categorical_crossentropy', metrics=['accuracy'])
+model.compile(optimizer = Adam(learning_rate = 0.005), loss = 'categorical_crossentropy', 
+	metrics=['accuracy'])
 
 # start training
 H = model.fit_generator(training_set,
@@ -69,16 +67,3 @@ H = model.fit_generator(training_set,
 
 # save the model to file
 model.save('../models/resnet152v2.h5')
-
-# visualize results
-plt.style.use("ggplot")
-plt.figure()
-plt.plot(np.arange(0, 10), H.history["loss"], label = "train_loss")
-plt.plot(np.arange(0, 10), H.history["val_loss"], label = "val_loss")
-plt.plot(np.arange(0, 10), H.history["accuracy"], label = "acc")
-plt.plot(np.arange(0, 10), H.history["val_accuracy"], label = "val_acc")
-plt.title("Training Loss and Accuracy")
-plt.xlabel("Epoch #")
-plt.ylabel("Loss/Accuracy")
-plt.legend()
-plt.show()

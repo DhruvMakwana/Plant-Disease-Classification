@@ -1,3 +1,4 @@
+# importing libraries
 import numpy as np
 import keras
 from keras.preprocessing.image import img_to_array
@@ -6,7 +7,6 @@ from keras.preprocessing import image
 import cv2
 
 def build(imagepath):
-     print(imagepath)
      print("[Info] loading pre-trained network...")
      model = load_model("./models/rn.h5")
 
@@ -50,6 +50,7 @@ def build(imagepath):
                     'Tomato_mosaic_virus': 37,
                     'Tomato_yellow_leaf_curl_virus':38}
      output_list = list(output_dict.keys())
+     
      print("[Info] loading image")
      img = cv2.imread(imagepath)
      img = cv2.resize(img, (224,224))

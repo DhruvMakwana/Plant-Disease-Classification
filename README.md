@@ -3,6 +3,9 @@
 ### Demo of application
 <img src="static/images/plantdisease.gif">
 
+### Blog
+For more detail explanation and working of this please visit blog [here](https://dhruvmakwana.github.io/2020-07-03/Plant-Disease-Classification)
+
 ## Dataset
 Here we have used the plant village dataset. The PlantVillage dataset consists of 61,486 healthy and unhealthy leaf images divided into 39 categories by species and disease.
 

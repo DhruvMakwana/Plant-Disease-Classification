@@ -5,6 +5,11 @@ from flask_mail import Mail
 from src.predict import build
 import os
 
+#desable warning
+import warnings
+warnings.filterwarnings("ignore")
+
+
 app = Flask(__name__)
 app.config.update(
     MAIL_SERVER = 'smtp.gmail.com',

@@ -7,7 +7,7 @@ from flask_mail import Mail
 from src.predict import build
 import os
 
-
+#Flask app
 app = Flask(__name__)
 app.config.update(
     MAIL_SERVER = 'smtp.gmail.com',
@@ -49,5 +49,6 @@ def contact():
                       )
     return render_template('index.html')
 
+# Main function app run
 if __name__ == "__main__":
   app.run(host = "127.0.0.1", port = 8080, debug = True)

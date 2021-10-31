@@ -6,6 +6,7 @@ from keras.models import load_model
 from keras.preprocessing import image
 import cv2
 
+# function for loading pre-trained network
 def build(imagepath):
      print("[Info] loading pre-trained network...")
      model = load_model("./models/rn.h5")
